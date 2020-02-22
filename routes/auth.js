@@ -41,7 +41,7 @@ router.post('/register', async(req, res) => {
 });
 
 router.post('/checkphonenumber', async(req, res) => {
-    console.log(req);
+    console.log(req.body);
     const user = await User.findOne({
         phone: req.body.phone
     });
