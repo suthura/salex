@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Phone = require('../model/phone');
 const { phoneValidation } = require('../Validation/phoneValidation');
+const jwt = require('jsonwebtoken');
 
 
 router.post('/addnew', async(req, res) => {
@@ -11,7 +12,7 @@ router.post('/addnew', async(req, res) => {
     if (error) return res.status(400).send(error.details[0].message);
 
     const IMEIExists = await Phone.findOne({ IMEI: req.body.IMEI });
-    if (IMEIExists) return res.status(400).send('Duplicate IMEI');
+    if (IMEIExists) return res.status(400).send({ error: 'Duplicate IMEI' });
 
     const phone = new Phone({
         Brand: req.body.Brand,
@@ -33,6 +34,16 @@ router.post('/addnew', async(req, res) => {
             messege: err
         });
     }
+});
+
+router.post('/getmine', async(req, res) => {
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+
+    // res.send(verified._id);
+    const phones = await Phone.find({
+        refID: verified._id
+    });
+    res.send(phones);
 });
 
 module.exports = router;

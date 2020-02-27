@@ -27,11 +27,11 @@ router.post('/sendresetmail', async(req, res) => {
         });
 
         var mailOptions = {
-            from: '"Folk Team" <folk@hardcodelk.com>',
+            from: '"Salex Team" <folk@hardcodelk.com>',
             to: req.body.email,
             subject: 'Reset Password',
-            text: 'Hey there, This is your password reset email',
-            html: '<b>Hey there! </b><br> This is your password reset email<br />Use This Code For Login:' + resetCode,
+            text: 'Hey there, This is your tempory login email',
+            html: '<b>Hey there! </b><br> This is your tempory login email<br />Use This Code For Login:' + resetCode,
         };
 
         transport.sendMail(mailOptions, async(error, info) => {
