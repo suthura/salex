@@ -34,3 +34,5 @@ router.post('/addnew', async(req, res) => {
         });
     }
 });
+
+module.exports = router;
