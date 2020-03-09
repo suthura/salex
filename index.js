@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const mailRoute = require('./routes/resetpass');
 const phoneRoute = require('./routes/phone');
+const shopRoute = require('./routes/shop');
 
 var bodyParser = require('body-parser');
 
@@ -26,6 +27,7 @@ app.use('/uploads', express.static('uploads'));
 app.use('/api/user', authRoute);
 app.use('/api/mail', mailRoute);
 app.use('/api/phone', phoneRoute);
+app.use('/api/shop', shopRoute);
 
 
 app.listen(process.env.PORT || 5000, () => console.log("Server up and running"));

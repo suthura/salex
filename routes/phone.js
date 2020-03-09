@@ -37,6 +37,7 @@ router.post('/addnew', async(req, res) => {
 });
 
 router.post('/getmine', async(req, res) => {
+
     const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
 
     // res.send(verified._id);
