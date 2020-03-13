@@ -54,7 +54,7 @@ router.post('/addtoCart', async(req, res) => {
 
     var newVal = { $set: { inCart: true } }
 
-    await Phone.updateOne(query, newVal, function(err, res) {
+    await Phone.updateOne(query, newVal, function(err) {
         if (err) {
             res.send(err);
         }
