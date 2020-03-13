@@ -30,6 +30,10 @@ const phoneSchema = new mongoose.Schema({
     image: {
         type: String,
         default: null
+    },
+    inCart: {
+        type: Boolean,
+        default: false
     }
 });
 

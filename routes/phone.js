@@ -42,9 +42,24 @@ router.post('/getmine', async(req, res) => {
 
     // res.send(verified._id);
     const phones = await Phone.find({
-        refID: verified._id
+        refID: verified._id,
+        inCart: false
     });
     res.send(phones);
+});
+
+router.post('/addtoCart', async(req, res) => {
+
+    var query = { _id: req.body.phoneid };
+
+    var newVal = { $set: { inCart: true } }
+
+    await Phone.updateOne(query, newVal, function(err, res) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
 });
 
 module.exports = router;
