@@ -42,8 +42,8 @@ router.post('/getmine', async(req, res) => {
 
     // res.send(verified._id);
     const phones = await Phone.find({
-        refID: verified._id
-            // inCart: false
+        refID: verified._id,
+        inCart: false
     });
     res.send(phones);
 });
