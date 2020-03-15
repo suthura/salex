@@ -42,8 +42,8 @@ router.post('/getmine', async(req, res) => {
 
     // res.send(verified._id);
     const phones = await Phone.find({
-        refID: verified._id,
-        inCart: false
+        refID: verified._id
+            // inCart: false
     });
     res.send(phones);
 });
@@ -60,6 +60,32 @@ router.post('/addtoCart', async(req, res) => {
         }
         res.send({ "message": "success" })
     });
+});
+
+router.post('/removeCart', async(req, res) => {
+
+    var query = { IMEI: req.body.IMEI };
+
+    var newVal = { $set: { inCart: false } }
+
+    await Phone.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
+router.post('/getcart', async(req, res) => {
+
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+
+    // res.send(verified._id);
+    const phones = await Phone.find({
+        refID: verified._id,
+        inCart: true
+    });
+    res.send(phones);
 });
 
 module.exports = router;
