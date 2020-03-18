@@ -38,7 +38,7 @@ router.post('/getmine', async(req, res) => {
     const shops = await Shop.find({
         refID: verified._id
     });
-    res.send({ "id": shops._id, "data": shops });
+    res.send(shops);
 });
 
 module.exports = router;
