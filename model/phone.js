@@ -34,6 +34,10 @@ const phoneSchema = new mongoose.Schema({
     inCart: {
         type: Boolean,
         default: false
+    },
+    availability: {
+        type: String,
+        default: "available"
     }
 });
 

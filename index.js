@@ -6,6 +6,7 @@ const authRoute = require('./routes/auth');
 const mailRoute = require('./routes/resetpass');
 const phoneRoute = require('./routes/phone');
 const shopRoute = require('./routes/shop');
+const saleRoute = require('./routes/sales');
 
 var bodyParser = require('body-parser');
 
@@ -28,6 +29,7 @@ app.use('/api/user', authRoute);
 app.use('/api/mail', mailRoute);
 app.use('/api/phone', phoneRoute);
 app.use('/api/shop', shopRoute);
+app.use('/api/sale', saleRoute);
 
 
 app.listen(process.env.PORT || 5000, () => console.log("Server up and running"));
