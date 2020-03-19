@@ -90,4 +90,19 @@ router.post('/getcart', async(req, res) => {
     res.send(phones);
 });
 
+router.post('/updateavailability', async(req, res) => {
+
+    var query = { IMEI: req.body.IMEI };
+
+    var newVal = { $set: { availability: "sold" } }
+
+    await Phone.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
+
 module.exports = router;

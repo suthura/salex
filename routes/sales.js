@@ -8,9 +8,12 @@ const jwt = require('jsonwebtoken');
 router.post('/newsale', async(req, res) => {
 
 
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+
+
     const sale = new Sale({
         shopid: req.body.shopid,
-        refID: req.body.refID,
+        refID: verified._id,
         saledata: req.body.saledata,
         total: req.body.total
     });
@@ -27,10 +30,11 @@ router.post('/newsale', async(req, res) => {
     }
 });
 
-router.post('/getmysales', async(req, res) => {
-    const sales = await Sale.find();
-    res.send(sales);
-});
+
+// router.post('/getmysales', async(req, res) => {
+//     const sales = await Sale.find();
+//     res.send(sales);
+// });
 
 
 module.exports = router;
