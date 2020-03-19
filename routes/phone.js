@@ -94,7 +94,12 @@ router.post('/updateavailability', async(req, res) => {
 
     var query = { IMEI: req.body.IMEI };
 
-    var newVal = { $set: { availability: "sold" } }
+    var newVal = {
+        $set: {
+            availability: "sold",
+            inCart: null
+        }
+    }
 
     await Phone.updateOne(query, newVal, function(err) {
         if (err) {
