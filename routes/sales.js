@@ -31,10 +31,17 @@ router.post('/newsale', async(req, res) => {
 });
 
 
-// router.post('/getmysales', async(req, res) => {
-//     const sales = await Sale.find();
-//     res.send(sales);
-// });
+router.post('/getmysales', async(req, res) => {
+
+    const verified = jwt.verify(req.body.token, process.env.TOKEN_SECRET);
+
+
+    const sales = await Sale.find({
+        refID: verified._id
+    });
+
+    res.send(sales);
+});
 
 
 module.exports = router;
