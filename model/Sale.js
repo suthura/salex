@@ -34,6 +34,9 @@ const salesSchema = new mongoose.Schema({
     saledata: [SaleDataSchema],
     total: {
         type: String
+    },
+    saletime: {
+        type: Date
     }
 });
 
