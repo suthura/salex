@@ -40,7 +40,7 @@ router.post('/getmysales', async(req, res) => {
 
     const sales = await Sale.find({
         refID: verified._id
-    });
+    }).sort({ saletime: -1 });
 
     res.send(sales);
 });
