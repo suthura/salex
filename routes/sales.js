@@ -15,7 +15,8 @@ router.post('/newsale', async(req, res) => {
         shopid: req.body.shopid,
         refID: verified._id,
         saledata: req.body.saledata,
-        total: req.body.total
+        total: req.body.total,
+        shopname: req.body.shopname
     });
     try {
         // console.log(post);

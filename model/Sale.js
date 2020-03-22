@@ -23,6 +23,10 @@ const salesSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    shopname: {
+        type: String,
+        default: null
+    },
     refID: {
         type: String,
         default: null
