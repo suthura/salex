@@ -41,4 +41,13 @@ router.post('/getmine', async(req, res) => {
     res.send(shops);
 });
 
+
+router.post('/getsingleshop', async(req, res) => {
+
+    const shops = await Shop.find({
+        _id: req.body.shopid
+    });
+    res.status(200).send(shops);
+});
+
 module.exports = router;
