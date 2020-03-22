@@ -26,6 +26,10 @@ const shopSchema = new mongoose.Schema({
     refID: {
         type: String,
         default: null
+    },
+    status: {
+        type: String,
+        default: "pending"
     }
 });
 

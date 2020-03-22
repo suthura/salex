@@ -45,5 +45,17 @@ router.post('/getmysales', async(req, res) => {
     res.send(sales);
 });
 
+router.post('/getsinglesales', async(req, res) => {
+
+
+    const sales = await Sale.find({
+        _id: req.body.saleid
+    });
+
+    res.send(sales[0].saledata);
+
+    // res.send(sales.saledata);
+});
+
 
 module.exports = router;
