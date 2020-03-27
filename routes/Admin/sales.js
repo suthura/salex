@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Sale = require('../model/Sale');
+const Sale = require('../../model/Sale');
 // const { postValidation } = require('../Validation/postValidation');
 const jwt = require('jsonwebtoken');
 // const Geo = require('geo-nearby');
