@@ -8,7 +8,7 @@ const phoneValidation = data => {
         Price: Joi.string().required(),
         capacity: Joi.string().min(3),
         refID: Joi.string(),
-        image: Joi.string()
+        image: Joi.string() || null
     }
 
     return Joi.validate(data, schema);

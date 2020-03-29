@@ -14,47 +14,25 @@ router.post('/addnew', async(req, res) => {
     const IMEIExists = await Phone.findOne({ IMEI: req.body.IMEI });
     if (IMEIExists) return res.status(400).send({ error: 'Duplicate IMEI' });
 
-    if (req.body.image != null) {
-        const phone = new Phone({
-            Brand: req.body.Brand,
-            PModel: req.body.PModel,
-            IMEI: req.body.IMEI,
-            Price: req.body.Price,
-            capacity: req.body.capacity,
-            refID: req.body.refID,
-            image: req.body.image
-        });
-        try {
-            const savedPhone = await phone.save();
+    const phone = new Phone({
+        Brand: req.body.Brand,
+        PModel: req.body.PModel,
+        IMEI: req.body.IMEI,
+        Price: req.body.Price,
+        capacity: req.body.capacity,
+        refID: req.body.refID,
+        image: req.body.image
+    });
+    try {
+        const savedPhone = await phone.save();
 
-            res.send({
-                status: "success"
-            });
-        } catch (err) {
-            res.send({
-                messege: err
-            });
-        }
-    } else {
-        const phone = new Phone({
-            Brand: req.body.Brand,
-            PModel: req.body.PModel,
-            IMEI: req.body.IMEI,
-            Price: req.body.Price,
-            capacity: req.body.capacity,
-            refID: req.body.refID
+        res.send({
+            status: "success"
         });
-        try {
-            const savedPhone = await phone.save();
-
-            res.send({
-                status: "success"
-            });
-        } catch (err) {
-            res.send({
-                messege: err
-            });
-        }
+    } catch (err) {
+        res.send({
+            messege: err
+        });
     }
 });
 
