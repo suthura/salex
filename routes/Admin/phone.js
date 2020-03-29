@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Phone = require('../../model/phone');
-const { phoneValidation } = require('../Validation/phoneValidation');
+const { phoneValidation } = require('../../Validation/phoneValidation');
 const jwt = require('jsonwebtoken');
 
 
