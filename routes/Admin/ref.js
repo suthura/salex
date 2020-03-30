@@ -3,7 +3,7 @@ const User = require('../../model/User');
 
 
 
-router.post('/allrefs', async(req, res) => {
+router.get('/allrefs', async(req, res) => {
 
     // res.send(verified._id);
     const refs = await Phone.find({
