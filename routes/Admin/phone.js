@@ -46,5 +46,20 @@ router.post('/getall', async(req, res) => {
     res.send(phones);
 });
 
+router.post('/removephone', async(req, res) => {
+
+    // res.send(verified._id);
+    try {
+        const phones = await Phone.deleteOne({
+            IMEI: req.body.IMEI
+        });
+
+        res.send({ message: "success" });
+    } catch (err) {
+        res.send({
+            messege: err
+        });
+    }
+});
 
 module.exports = router;
