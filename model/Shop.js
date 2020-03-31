@@ -1,5 +1,16 @@
 const mongoose = require('mongoose');
 
+const GeoSchema = new mongoose.Schema({
+    type: {
+        type: String,
+        default: "Point"
+    },
+    coordinates: {
+        type: [Number],
+        index: "2dsphere"
+    }
+});
+
 const shopSchema = new mongoose.Schema({
     Name: {
         type: String,
@@ -30,7 +41,8 @@ const shopSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "pending"
-    }
+    },
+    geometry: GeoSchema
 });
 
 module.exports = mongoose.model('Shop', shopSchema);
