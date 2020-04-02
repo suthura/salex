@@ -7,7 +7,8 @@ const shopValidation = data => {
         Add_l2: Joi.string().required(),
         City: Joi.string().required(),
         Phone: Joi.string().min(9),
-        refID: Joi.string()
+        refID: Joi.string(),
+        geometry: Joi.object(),
     }
 
     return Joi.validate(data, schema);
