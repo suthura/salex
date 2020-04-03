@@ -32,5 +32,12 @@ router.post('/addnew', async(req, res) => {
     }
 });
 
+router.get('/getall', async(req, res) => {
+
+    // res.send(verified._id);
+    const shops = await Shop.find();
+    res.send(shops);
+});
+
 
 module.exports = router;
