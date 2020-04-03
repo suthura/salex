@@ -10,6 +10,7 @@ const saleRoute = require('./routes/sales');
 const adminSaleRoute = require('./routes/Admin/sales');
 const adminPhoneRoute = require('./routes/Admin/phone');
 const adminRefRoute = require('./routes/Admin/ref');
+const adminShopRoute = require('./routes/Admin/shop');
 
 var bodyParser = require('body-parser');
 
@@ -36,6 +37,7 @@ app.use('/api/sale', saleRoute);
 app.use('/api/admin/sale', adminSaleRoute);
 app.use('/api/admin/phone', adminPhoneRoute);
 app.use('/api/admin/ref', adminRefRoute);
+app.use('/api/admin/shop', adminShopRoute);
 
 
 app.listen(process.env.PORT || 5000, () => console.log("Server up and running"));
