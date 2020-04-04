@@ -36,7 +36,11 @@ const shopSchema = new mongoose.Schema({
     },
     refID: {
         type: String,
-        default: null
+        default: 'Not Assigned'
+    },
+    refName: {
+        type: String,
+        default: 'Not Assigned'
     },
     status: {
         type: String,
