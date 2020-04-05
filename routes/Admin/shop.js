@@ -45,7 +45,7 @@ router.post('/updateref', async(req, res) => {
 
     var newVal = { $set: { refID: req.body.refID } }
 
-    await Phone.updateOne(query, newVal, function(err) {
+    await Shop.updateOne(query, newVal, function(err) {
         if (err) {
             res.send(err);
         }
