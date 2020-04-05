@@ -46,7 +46,7 @@ router.post('/updateref', async(req, res) => {
     var newVal = {
         $set: {
             refID: req.body.refID,
-            refName: re.body.refName
+            refName: req.body.refName
         }
     }
 
