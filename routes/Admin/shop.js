@@ -39,5 +39,19 @@ router.get('/getall', async(req, res) => {
     res.send(shops);
 });
 
+router.post('/updateref', async(req, res) => {
+
+    var query = { _id: req.body.shopID };
+
+    var newVal = { $set: { refID: req.body.refID } }
+
+    await Phone.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
 
 module.exports = router;
