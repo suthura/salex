@@ -31,6 +31,10 @@ const salesSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    refName: {
+        type: String,
+        default: null
+    },
     saledata: [SaleDataSchema],
     total: {
         type: String
