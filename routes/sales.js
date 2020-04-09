@@ -14,6 +14,7 @@ router.post('/newsale', async(req, res) => {
     const sale = new Sale({
         shopid: req.body.shopid,
         refID: verified._id,
+        refName: verified.name,
         saledata: req.body.saledata,
         total: req.body.total,
         shopname: req.body.shopname,
