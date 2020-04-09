@@ -58,5 +58,19 @@ router.post('/updateref', async(req, res) => {
     });
 });
 
+router.post('/deleteshop', async(req, res) => {
+    try {
+        await Shop.deleteOne({
+            _id: req.body.shopID
+        });
+        res.send({
+            status: "success"
+        });
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+
 
 module.exports = router;
