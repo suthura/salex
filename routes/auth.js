@@ -31,7 +31,8 @@ router.post('/register', async(req, res) => {
         res.header('auth-token', token).send({
             loginstatus: 'olduser',
             status: user.status,
-            token: token
+            token: token,
+            usertype: user.usertype
         });
     } catch (err) {
         res.send({
@@ -54,7 +55,9 @@ router.post('/checkphonenumber', async(req, res) => {
 
     res.header('auth-token', token).send({
         loginstatus: 'olduser',
-        token: token
+        token: token,
+        usertype: user.usertype
+
     });
 });
 
