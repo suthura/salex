@@ -32,6 +32,30 @@ router.post('/addnew', async(req, res) => {
     }
 });
 
+router.post('/updateshop', async(req, res) => {
+
+    var query = { _id: req.body.shopID };
+
+    var newVal = {
+        $set: {
+            Name: req.body.Name,
+            Add_l1: req.body.Add_l1,
+            Add_l2: req.body.Add_l2,
+            City: req.body.City,
+            Phone: req.body.Phone,
+            refID: req.body.refID,
+            geometry: req.body.geometry
+        }
+    }
+
+    await Shop.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
 router.get('/getall', async(req, res) => {
 
     // res.send(verified._id);
