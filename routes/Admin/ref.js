@@ -15,6 +15,8 @@ router.get('/allrefs', async(req, res) => {
 
 router.post('/updateref', async(req, res) => {
 
+    console.log(req.body);
+
     var query = { _id: req.body.refID };
 
     var newVal = {
