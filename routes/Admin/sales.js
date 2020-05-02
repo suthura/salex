@@ -24,7 +24,14 @@ router.post('/getshoplesales', async(req, res) => {
 
 });
 
+router.post('/getrefsales', async(req, res) => {
+    const sales = await Sale.find({
+        refID: req.body.refID
+    }).sort({ saletime: -1 });
 
+    res.send(sales);
+
+});
 
 router.post('/getsinglesales', async(req, res) => {
     const sales = await Sale.find({
