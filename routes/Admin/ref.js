@@ -15,7 +15,7 @@ router.get('/allrefs', async(req, res) => {
 
 router.post('/updateref', async(req, res) => {
 
-    console.log(req.body);
+    // console.log(req.body);
 
     var query = { _id: req.body.refID };
 
@@ -38,5 +38,18 @@ router.post('/updateref', async(req, res) => {
     });
 });
 
+
+router.post('/deleteref', async(req, res) => {
+    try {
+        await User.deleteOne({
+            _id: req.body.refID
+        });
+        res.send({
+            status: "success"
+        });
+    } catch (err) {
+        res.send(err);
+    }
+});
 
 module.exports = router;
