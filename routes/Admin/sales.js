@@ -14,6 +14,60 @@ router.get('/getsales', async(req, res) => {
 });
 
 
+router.post('/gettodaysales', async(req, res) => {
+    function remDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() - days);
+        console.log(result);
+        return result;
+    }
+
+    const date = req.body.currentdate;
+    const sales = await Sale.find({
+        saletime: {
+            "$gte": remDays(date, 1),
+            "$lt": date
+        }
+    }).sort({ saletime: -1 });
+    res.send(sales);
+});
+
+router.post('/getweeksales', async(req, res) => {
+    function remDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() - days);
+        console.log(result);
+        return result;
+    }
+
+    const date = req.body.currentdate;
+    const sales = await Sale.find({
+        saletime: {
+            "$gte": remDays(date, 7),
+            "$lt": date
+        }
+    }).sort({ saletime: -1 });
+    res.send(sales);
+});
+
+router.post('/getmonthsales', async(req, res) => {
+    function remDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() - days);
+        console.log(result);
+        return result;
+    }
+
+    const date = req.body.currentdate;
+    const sales = await Sale.find({
+        saletime: {
+            "$gte": remDays(date, 30),
+            "$lt": date
+        }
+    }).sort({ saletime: -1 });
+    res.send(sales);
+});
+
 
 router.post('/getshoplesales', async(req, res) => {
     const sales = await Sale.find({
