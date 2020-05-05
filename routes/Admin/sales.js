@@ -14,7 +14,7 @@ router.get('/getsales', async(req, res) => {
 });
 
 
-router.post('/gettodaysales', async(req, res) => {
+router.post('/gettodaysale', async(req, res) => {
     function remDays(date, days) {
         var result = new Date(date);
         result.setDate(result.getDate() - days);

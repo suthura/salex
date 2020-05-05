@@ -36,6 +36,32 @@ router.post('/addnew', async(req, res) => {
     }
 });
 
+
+router.post('/updatephone', async(req, res) => {
+
+    var query = { _id: req.body.phoneID };
+
+    var newVal = {
+        $set: {
+            Brand: req.body.Brand,
+            PModel: req.body.PModel,
+            IMEI: req.body.IMEI,
+            Price: req.body.Price,
+            capacity: req.body.capacity,
+            refID: req.body.refID,
+            image: req.body.image
+        }
+    }
+
+    await Phone.updateOne(query, newVal, function(err) {
+        if (err) {
+            res.send(err);
+        }
+        res.send({ "message": "success" })
+    });
+});
+
+
 router.post('/getall', async(req, res) => {
 
     // res.send(verified._id);
