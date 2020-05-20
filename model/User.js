@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         default: 'active'
+    },
+    password: {
+        type: String,
+        min: 6
     }
 });
 
